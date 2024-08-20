@@ -1,18 +1,19 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, AppRegistry} from 'react-native';
+import {name as appName} from '../../app.json';
 
-function App(): React.JSX.Element {
+export default function App() {
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <View style={styles.wrapper}>
       <Text>Soy byocti</Text>
-    </SafeAreaView>
+    </View>
   );
 }
+
+AppRegistry.registerComponent(appName, () => App);
 
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
   },
 });
-
-export default App;
