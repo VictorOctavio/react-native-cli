@@ -1,19 +1,17 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, StyleSheet, Text, AppRegistry} from 'react-native';
-import {name as appName} from '../../app.json';
+import {View} from 'react-native';
+import {Text, useTheme} from 'react-native-paper';
 
 export default function App() {
+  const {colors} = useTheme();
   return (
-    <View style={styles.wrapper}>
-      <Text>Soy byocti</Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: colors.secondary,
+      }}>
+      <Text style={{color: colors.primary}}>Soy byocti</Text>
     </View>
   );
 }
-
-AppRegistry.registerComponent(appName, () => App);
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-  },
-});
