@@ -9,9 +9,9 @@ export default function App() {
     <View
       style={{
         flex: 1,
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.background,
       }}>
-      <Text style={{color: colors.primary}}>Soy byocti</Text>
+      <Text>Soy byocti</Text>
     </View>
   );
 }
