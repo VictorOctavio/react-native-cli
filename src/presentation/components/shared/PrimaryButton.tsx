@@ -29,9 +29,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  buttonText: {
-    color: '#fff',
-  },
   buttonPressed: {
     opacity: 0.9,
   },

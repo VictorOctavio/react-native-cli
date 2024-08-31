@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
-import {useTheme} from 'react-native-paper';
-import {PrimaryButton} from '../components';
+import {Button, useTheme} from 'react-native-paper';
+// import {PrimaryButton} from '../components';
 
 export const CounterScreen = () => {
   const {colors} = useTheme();
@@ -26,8 +26,12 @@ export const CounterScreen = () => {
       </Text>
 
       <View style={styles.wrapperButtons}>
-        <PrimaryButton onPress={reset} text="reset" key={1} />
-        <PrimaryButton onPress={increment} text="+1" key={2} />
+        {/* <PrimaryButton onPress={reset} text="reset" key={1} /> */}
+        {/* <PrimaryButton onPress={increment} text="+1" key={2} /> */}
+
+        <Button onPress={increment} onLongPress={reset} mode="contained-tonal">
+          Incrementar
+        </Button>
       </View>
     </View>
   );
