@@ -11,7 +11,7 @@ export default function App() {
         flex: 1,
         backgroundColor: colors.background,
       }}>
-      <Text>Soy byocti</Text>
+      <Text>Soy byoctii</Text>
     </View>
   );
 }

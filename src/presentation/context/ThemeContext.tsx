@@ -1,47 +1,39 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/react-in-jsx-scope */
-import {darkPalette, lightPalette} from '@/config/theme/Tokens';
-import {darkTheme, lightTheme} from '@/config/theme/Theme';
-import {createContext, PropsWithChildren, useEffect, useState} from 'react';
+import {PropsWithChildren} from 'react';
 import {useColorScheme} from 'react-native';
-import {PaperProvider} from 'react-native-paper';
-import {Palette} from '@/config/theme/Types';
+import {
+  PaperProvider,
+  MD2LightTheme as DefaultTheme,
+  MD2DarkTheme as DarkDefaultTheme,
+} from 'react-native-paper';
 
-type ThemeColor = 'light' | 'dark';
+const lightTheme = {
+  ...DefaultTheme,
+  myOwnProperty: true,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#F5EDED',
+    primary: 'tomato',
+    text: '#2F3645',
+  },
+};
 
-interface ThemeContextProps {
-  theme: ThemeColor;
-  colors: Palette;
-  toggleTheme: (theme: ThemeColor) => void;
-}
-
-export const ThemeContext = createContext({} as ThemeContextProps);
+const darkTheme = {
+  ...DefaultTheme,
+  myOwnProperty: true,
+  colors: {
+    ...DarkDefaultTheme.colors,
+    background: '#2F3645',
+    primary: 'tomato',
+    text: '#EBF4F6',
+  },
+};
 
 export const ThemeProvider = ({children}: PropsWithChildren) => {
   const colorTheme = useColorScheme();
-  const [theme, setTheme] = useState<ThemeColor>(colorTheme as ThemeColor);
-
-  useEffect(() => {
-    setTheme(colorTheme as ThemeColor);
-  }, [colorTheme]);
-
-  const handleTheme = (theme: ThemeColor) => {
-    setTheme(theme);
-  };
-
   return (
-    <ThemeContext.Provider
-      value={{
-        theme: theme,
-        colors: theme === 'light' ? lightTheme : darkTheme,
-        toggleTheme: (theme: ThemeColor) => handleTheme(theme),
-      }}>
-      <PaperProvider
-        theme={{
-          colors: theme === 'light' ? lightPalette : darkPalette,
-        }}>
-        {children}
-      </PaperProvider>
-    </ThemeContext.Provider>
+    <PaperProvider theme={colorTheme === 'light' ? lightTheme : darkTheme}>
+      {children}
+    </PaperProvider>
   );
 };
